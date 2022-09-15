@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -15,7 +16,7 @@ class PostController extends Controller
     public function index()
     {
         return view('admin.posts.index', [
-            'posts' => Post::get(),
+            'posts' => Post::with('user')->get(),
         ]);
     }
 
@@ -24,9 +25,10 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
+        return view('admin.posts.create');
     }
 
     /**
@@ -37,7 +39,18 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => ['required', 'string', 'max:100'],
+            'desc' => ['required', 'string'],
+            'image' => ['required', 'file', 'image', 'max:2048', 'mimes:png,jpg,jpeg,svg']
+        ]);
+        $validatedData['user_id'] = auth()->user()->id;
+        if($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('image-post', 'public');
+        }
+
+        Post::create($validatedData);
+        return redirect()->route('posts.index')->with('success', "Post Created Success");
     }
 
     /**
@@ -48,7 +61,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('admin.posts.view', compact(['post']));
     }
 
     /**
@@ -59,7 +72,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact(['post']));
     }
 
     /**
@@ -71,7 +84,21 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => ['required', 'string', 'max:100'],
+            'desc' => ['required', 'string'],
+            'image' => ['required', 'file', 'image', 'max:2048', 'mimes:png,jpg,jpeg,svg']
+        ]);
+        $validatedData['user_id'] = auth()->user()->id;
+        if($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('image-post', 'public');
+        } else {
+            Storage::delete($post->image);
+            $validatedData['image'] = $request->file('image')->store('image-post', 'public');
+        }
+        $post->update($validatedData);
+
+        return redirect()->route('posts.index')->with('success', "post Updated");
     }
 
     /**
@@ -82,6 +109,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        Storage::delete($post->image);
+        $post->delete();
+        return redirect()->route('posts.index')->with('success', 'post deleted');
     }
 }

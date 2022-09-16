@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -28,7 +29,9 @@ class PostController extends Controller
     public function create(Request $request)
     {
 
-        return view('admin.posts.create');
+        return view('admin.posts.create', [
+            'categories' => Category::with('post')->get(),
+        ]);
     }
 
     /**
@@ -37,14 +40,16 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Category $category)
     {
         $validatedData = $request->validate([
             'title' => ['required', 'string', 'max:100'],
             'desc' => ['required', 'string'],
-            'image' => ['required', 'file', 'image', 'max:2048', 'mimes:png,jpg,jpeg,svg']
+            'image' => ['required', 'file', 'image', 'max:2048', 'mimes:png,jpg,jpeg,svg'],
+            'category_id' => ['string']
         ]);
         $validatedData['user_id'] = auth()->user()->id;
+        // $validatedData['category_id'] = $category->id;
         if($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('image-post', 'public');
         }
@@ -72,7 +77,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact(['post']));
+        $categories = Category::with('post')->get();
+        return view('admin.posts.edit', compact(['post', 'categories']));
     }
 
     /**

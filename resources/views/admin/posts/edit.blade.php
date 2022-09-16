@@ -25,6 +25,13 @@
     		        <label for="description">Description</label>
     		        <textarea rows="5" class="form-control" name="desc" ></textarea>
     		    </div>
+                <select class="form-select" name="category_id" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    @foreach ($categories as $category )
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+
+                  </select>
 
     		    <div class="form-group">
     		        <p><span class="require">*</span> - required fields</p>

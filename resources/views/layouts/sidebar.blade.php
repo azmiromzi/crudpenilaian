@@ -95,6 +95,16 @@
             <i class="fas fa-fw fa-chart-area"></i>
             <span>All Posts</span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.index') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>All Users</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('categories.index') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>All Category</span></a>
+    </li>
 
     <!-- Nav Item - Tables -->
     {{-- <li class="nav-item">
@@ -111,12 +121,10 @@
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 
-    <!-- Sidebar Message -->
-    <div class="sidebar-card d-none d-lg-flex">
-        <img class="sidebar-card-illustration mb-2" src=" {{ asset('startbootstrap-sb-admin-2-gh-pages/img/undraw_rocket.svg') }}" alt="...">
-        <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-        <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-    </div>
+
 
 </ul>
 <!-- End of Sidebar -->
+
+
+

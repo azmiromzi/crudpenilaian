@@ -19,7 +19,7 @@ class Admin
     {
 
         if(Auth::check() && Auth::user()->is_admin == 1) {
-             return $next($request);
+            return $next($request);
         }
         return redirect()->route('user')->with('message', 'you cant enter that page');
     }

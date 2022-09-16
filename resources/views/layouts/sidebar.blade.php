@@ -105,6 +105,11 @@
             <i class="fas fa-fw fa-chart-area"></i>
             <span>All Category</span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('cetak') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>cetak</span></a>
+    </li>
 
     <!-- Nav Item - Tables -->
     {{-- <li class="nav-item">

@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use PDF;
 
 class PostController extends Controller
 {
@@ -118,5 +119,13 @@ class PostController extends Controller
         Storage::delete($post->image);
         $post->delete();
         return redirect()->route('posts.index')->with('success', 'post deleted');
+    }
+
+    public function cetak()
+    {
+
+        $posts = Post::all();
+        $pdf   = PDF::loadview('admin.posts.cetak', ['posts' => $posts]);
+        return $pdf->download('laporan-post.pdf');
     }
 }

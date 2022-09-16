@@ -38,6 +38,7 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::resource('/admin', AdminController::class);
     Route::resource('/posts', PostController::class);
     Route::resource('/categories', CategoryController::class);
+    Route::get('posts-cetak', [PostController::class, 'cetak'])->name('cetak');
 
 });
 

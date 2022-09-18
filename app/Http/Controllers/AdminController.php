@@ -98,4 +98,15 @@ class AdminController extends Controller
         $admin->delete();
         return redirect()->route('admin.index')->with('success', 'users delete');
     }
+    public function laporanuser() {
+        return view('admin.users.laporan', [
+            'users' => User::get(),
+        ]);
+    }
+    public function cetakuser() {
+       $users = User::get();
+
+       $pdf   = PDF::loadview('admin.users.cetak', ['users' => $users]);
+       return $pdf->stream();
+    }
 }

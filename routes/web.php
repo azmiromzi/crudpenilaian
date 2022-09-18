@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardadminController;
 use App\Http\Controllers\PostController;
+use App\Http\Middleware\User;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth'])->group(function() {
+Route::middleware(['auth', 'user'])->group(function() {
     // Route::resource('profile', ProfileController::class);
     Route::get('/user', function() {
         return view('user.index');
@@ -29,16 +32,16 @@ Route::middleware(['auth'])->group(function() {
 
 });
 Route::middleware(['auth', 'admin'])->group(function() {
-    Route::get('/dashboard', function () {
-        return view('dashboard', [
-            'banyakpost' => Post::count(),
-        ]);
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardadminController::class, 'dashboard'])->name('dashboard');
 
     Route::resource('/admin', AdminController::class);
     Route::resource('/posts', PostController::class);
     Route::resource('/categories', CategoryController::class);
-    Route::get('posts-cetak', [PostController::class, 'cetak'])->name('cetak');
+    Route::get('laporan-post', [PostController::class, 'laporanpost'])->name('laporanpost');
+    Route::get('posts-cetak', [PostController::class, 'cetak'])->name('cetak-post');
+
+    Route::get('laporan-user', [AdminController::class, 'laporanuser'])->name('laporanuser');
+    Route::get('users-cetak', [AdminController::class, 'cetakuser'])->name('cetak-user');
 
 });
 

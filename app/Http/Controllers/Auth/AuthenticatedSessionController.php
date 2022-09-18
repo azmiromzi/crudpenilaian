@@ -30,16 +30,16 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
-        $request->session()->regenerate();
 
-        if(Auth::user()->is_admin == 1) {
-
+        if( Auth::user()->level === 1) {
+            $request->session()->regenerate();
             return redirect()->intended(RouteServiceProvider::HOME)->with('success', 'Congratulations, Login Success');
+        } else {
+            $request->session()->regenerate();
+            return redirect()->route('dashboard');
         }
-        else
-        {
-            return redirect()->route('user')->with('success', 'Congratulations, Login Success');
-        }
+
+
     }
 
     /**

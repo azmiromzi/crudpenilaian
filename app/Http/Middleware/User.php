@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Admin
+class User
 {
     /**
      * Handle an incoming request.
@@ -17,12 +17,12 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
+        if(Auth::check() && Auth::user()->level === 0) {
 
-        if(Auth::check() && Auth::user()->is_admin === 1) {
-            return $next($request);
+            return abort(403);
         } else{
 
-            return redirect()->route('user');
+            return $next($request);
         }
     }
 }

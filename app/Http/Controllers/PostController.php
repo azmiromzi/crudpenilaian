@@ -131,6 +131,6 @@ class PostController extends Controller
 
         $posts = Post::all();
         $pdf   = PDF::loadview('admin.posts.cetak', ['posts' => $posts]);
-        return $pdf->stream();
+        return $pdf->download('laporan-pegawai-pdf.pdf');
     }
 }

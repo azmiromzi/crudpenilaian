@@ -193,7 +193,7 @@
                 <form action="{{ route('logout') }}" method="POST" id="logout-form">
                     @csrf
                 <button type="submit" class="dropdown-item" href="{{ route('logout') }}" >
-                    {{-- <i class="fas fa-sign  -out-alt fa-sm fa-fw mr-2 text-gray-400"></i> --}}
+
                     Logout
                 </button>
                 </form>

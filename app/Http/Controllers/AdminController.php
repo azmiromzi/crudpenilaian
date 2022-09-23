@@ -6,6 +6,7 @@ use App\Models\User;
 use Doctrine\Inflector\Rules\English\Rules;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use PDF;
 
 class AdminController extends Controller
 {
@@ -107,6 +108,6 @@ class AdminController extends Controller
        $users = User::get();
 
        $pdf   = PDF::loadview('admin.users.cetak', ['users' => $users]);
-       return $pdf->stream();
+       return $pdf->download('laporan-pegawai-user-pdf.pdf');
     }
 }

@@ -82,7 +82,7 @@ class CategoryController extends Controller
         ]);
 
         $category->update($validate);
-        return redirect()->route('categories.index')->with('success', 'category create success');
+        return redirect()->route('categories.index')->with('success', 'category update success');
     }
 
     /**

@@ -122,14 +122,14 @@ class PostController extends Controller
     }
     public function laporanpost() {
         return view('admin.posts.laporan', [
-            'posts' => Post::with('user')->get(),
+            'posts' => Post::get(),
         ]);
     }
 
     public function cetak()
     {
 
-        $posts = Post::all();
+        $posts = Post::get();
         $pdf   = PDF::loadview('admin.posts.cetak', ['posts' => $posts]);
         return $pdf->download('laporan-pegawai-pdf.pdf');
     }

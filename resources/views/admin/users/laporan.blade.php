@@ -15,7 +15,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
             </div>
             <div class="card-body">
-                <a href="{{ route('admin.create') }}" class="d-block mb-3 btn btn-primary">Create Admin</a>
+                <a href="{{ route('cetak-user') }}" class="d-block mb-3 btn btn-primary">Cetak Admin</a>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>

@@ -12,6 +12,8 @@
     <title>SB Admin 2 - Dashboard</title>
 
     <!-- Custom fonts for this template-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -36,6 +38,13 @@
             <div id="content">
 
                 @include('layouts.navigation')
+
+                @if (session('success'))
+                <div class="alert alert-warning alert-dismissible fade show w-75" role="alert">
+                    {{ session('success')}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                @endif
 
                 @yield('content')
 
@@ -66,6 +75,7 @@
 
 
     <!-- Bootstrap core JavaScript-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src=" {{ asset('startbootstrap-sb-admin-2-gh-pages/vendor/jquery/jquery.min.js') }}"></script>
     <script src=" {{ asset('startbootstrap-sb-admin-2-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
@@ -81,6 +91,7 @@
     <!-- Page level custom scripts -->
     <script src=" {{ asset('startbootstrap-sb-admin-2-gh-pages/js/demo/chart-area-demo.js') }}"></script>
     <script src=" {{ asset('startbootstrap-sb-admin-2-gh-pages/js/demo/chart-pie-demo.js') }}"></script>
+
 
 </body>
 

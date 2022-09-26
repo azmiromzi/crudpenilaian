@@ -37,8 +37,8 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::resource('/admin', AdminController::class);
     Route::resource('/posts', PostController::class);
     Route::resource('/categories', CategoryController::class);
-    Route::get('laporan-post', [PostController::class, 'laporanpost'])->name('laporanpost');
-    Route::get('posts-cetak', [PostController::class, 'cetak'])->name('cetak-post');
+    Route::get('laporan-post', [AdminController::class, 'laporanpost'])->name('laporanpost');
+    Route::get('posts-cetak', [AdminController::class, 'cetakpost'])->name('cetak-post');
 
     Route::get('laporan-user', [AdminController::class, 'laporanuser'])->name('laporanuser');
     Route::get('users-cetak', [AdminController::class, 'cetakuser'])->name('cetak-user');

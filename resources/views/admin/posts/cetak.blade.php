@@ -22,9 +22,8 @@
                         <tr>
                             <th>Number</th>
                             <th>Name</th>
-                            <th>Title</th>
-                            <th>Image</th>
-                            <th>Waktu Post</th>
+                            <th>waktu</th>
+
                         </tr>
                     </thead>
 
@@ -33,11 +32,8 @@
 
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $post->user->name }}</td>
                             <td>{{ $post->title }}</td>
-                            <td>
-                                <img class="img-fluid" style="width: 100px" src="{{ asset('storage/' . $post->image) }}" alt="">
-                            </td>
+
                             <td>{{ $post->created_at->format('Y/m/d') }}</td>
 
                         </tr>

@@ -120,17 +120,5 @@ class PostController extends Controller
         $post->delete();
         return redirect()->route('posts.index')->with('success', 'post deleted');
     }
-    public function laporanpost() {
-        return view('admin.posts.laporan', [
-            'posts' => Post::get(),
-        ]);
-    }
 
-    public function cetak()
-    {
-
-        $posts = Post::get();
-        $pdf   = PDF::loadview('admin.posts.cetak', ['posts' => $posts]);
-        return $pdf->download('laporan-pegawai-pdf.pdf');
-    }
 }

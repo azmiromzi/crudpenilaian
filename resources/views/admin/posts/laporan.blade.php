@@ -20,14 +20,16 @@
                             <tr>
                                 <th>Number</th>
                                 <th>Name</th>
-                                <th>Title</th>
+                                <th>image</th>
+                                <th>waktu</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th>Number</th>
                                 <th>Title</th>
-                                <th>Waktu Post</th>
+                                <th>image</th>
+                                <th>waktu</th>
                             </tr>
                         </tfoot>
                         <tbody>

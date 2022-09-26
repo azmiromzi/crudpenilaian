@@ -5,7 +5,7 @@ namespace App\Exports;
 use App\Models\Post;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class PostExport implements FromCollection
+class PostsExport implements FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection

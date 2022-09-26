@@ -42,8 +42,8 @@ Route::middleware(['auth', 'admin'])->group(function() {
 
     Route::get('laporan-user', [AdminController::class, 'laporanuser'])->name('laporanuser');
     Route::get('users-cetak', [AdminController::class, 'cetakuser'])->name('cetak-user');
-    Route::get('users/export', [AdminController::class, 'export'])->name('excel-cetak-user');
     Route::get('posts/export', [AdminController::class, 'exportpost'])->name('excel-cetak-post');
+    Route::get('users/export', [AdminController::class, 'export'])->name('excel-cetak-user');
 
 });
 

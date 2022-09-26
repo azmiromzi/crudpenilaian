@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use <<<<<<< HEAD
+
 use App\Exports\PostExport;
+use App\Exports\PostsExport;
 use App\Exports\UsersExport;
-=======
+
 use App\Models\Post;
->>>>>>> 8109a0e9a20113c007cbb55020a4fcaddf8f1f48
+
 use App\Models\User;
 use Doctrine\Inflector\Rules\English\Rules;
 use Illuminate\Http\Request;
@@ -122,10 +123,6 @@ class AdminController extends Controller
     {
         return Excel::download(new UsersExport, 'users.xlsx');
     }
-    public function exportpost()
-    {
-        return Excel::download(new PostExport, 'posts.xlsx');
-    }
 
     public function laporanpost() {
         return view('admin.posts.laporan', [
@@ -140,3 +137,8 @@ class AdminController extends Controller
         $pdf   = PDF::loadview('admin.posts.cetak', ['posts' => $posts]);
         return $pdf->download('laporan-pegawai-pdf.pdf');
     }
+    public function exportpost()
+    {
+        return Excel::download(new PostsExport, 'posts.xlsx');
+    }
+}

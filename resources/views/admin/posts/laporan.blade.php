@@ -14,6 +14,7 @@
 
             <div class="card-body">
                 <a href="{{ route('cetak-post') }}" class="d-block mb-3 btn btn-primary">cetak laporan post</a>
+                <a href="{{ route('excel-cetak-post') }}" class="d-block mb-3 btn btn-primary">cetak laporan post excel</a>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PostExport;
+use App\Exports\UsersExport;
 use App\Models\User;
 use Doctrine\Inflector\Rules\English\Rules;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
 class AdminController extends Controller
@@ -109,5 +112,13 @@ class AdminController extends Controller
 
        $pdf   = PDF::loadview('admin.users.cetak', ['users' => $users]);
        return $pdf->download('laporan-pegawai-user-pdf.pdf');
+    }
+    public function export()
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
+    }
+    public function exportpost()
+    {
+        return Excel::download(new PostExport, 'posts.xlsx');
     }
 }

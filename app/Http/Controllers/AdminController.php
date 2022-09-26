@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Doctrine\Inflector\Rules\English\Rules;
 use Illuminate\Http\Request;
@@ -109,5 +110,19 @@ class AdminController extends Controller
 
        $pdf   = PDF::loadview('admin.users.cetak', ['users' => $users]);
        return $pdf->download('laporan-pegawai-user-pdf.pdf');
+    }
+
+    public function laporanpost() {
+        return view('admin.posts.laporan', [
+            'posts' => Post::get(),
+        ]);
+    }
+
+    public function cetakpost()
+    {
+
+        $posts = Post::get();
+        $pdf   = PDF::loadview('admin.posts.cetak', ['posts' => $posts]);
+        return $pdf->download('laporan-pegawai-pdf.pdf');
     }
 }

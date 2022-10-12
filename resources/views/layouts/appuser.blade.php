@@ -42,9 +42,9 @@
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
            @include("layouts.navuser")
-
+            
         </div>
-        
+
         <!-- Navbar & Hero End -->
 
 

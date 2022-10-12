@@ -5,6 +5,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardadminController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\UserViewController;
 use App\Http\Middleware\User;
 use App\Models\Category;
 use App\Models\Post;
@@ -27,9 +28,15 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'user'])->group(function() {
     // Route::resource('profile', ProfileController::class);
-    Route::get('/user', function() {
-        return view('user.dashboarduser');
-    })->name('user');
+    Route::get('/user', [UserViewController::class, 'dashboard'])->name('user');
+    Route::get('/user/about', [UserViewController::class, 'about'])->name('user.about');
+    Route::get('/user/service', [UserViewController::class, 'service'])->name('user.service');
+    Route::get('/user/menu', [UserViewController::class, 'menu'])->name('user.menu');
+    Route::get('/user/contact', [UserViewController::class, 'contact'])->name('user.contact');
+    Route::get('/user/booking', [UserViewController::class, 'booking'])->name('user.booking');
+    Route::get('/user/testimonial', [UserViewController::class, 'testimonial'])->name('user.testimonial');
+    Route::get('user/menu/{pesan}', [UserViewController::class, 'pesanmenu'])->name('user.menu.pesan');
+    Route::post('user/menu', [UserViewController::class, 'pesanmenustore'])->name('user.menu.pesan.store');
 
 });
 Route::middleware(['auth', 'admin'])->group(function() {

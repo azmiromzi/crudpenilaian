@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Status;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -27,19 +29,20 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Category::create([
-            'name' => 'APPETIZER',
+            'name' => 'Breakfast',
         ]);
         \App\Models\Category::create([
-            'name' => 'SOUP',
+            'name' => 'Launch',
         ]);
         \App\Models\Category::create([
-            'name' => 'MAIN COURSE',
+            'name' => 'Dinner',
         ]);
-        \App\Models\Category::create([
-            'name' => 'DESSERT ',
+        Status::create([
+            'name' => 'Sedang Diproses'
         ]);
-        \App\Models\Category::create([
-            'name' => 'HOT BEVERAGE',
+        Status::create([
+            'name' => 'Selesai'
         ]);
+
     }
 }

@@ -43,7 +43,6 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $category->name }}</td>
-                                <td>{{ $category->email }}</td>
 
                                 <td>{{ $category->created_at->format('Y/m/d') }}</td>
                                 <td class="d-flex justify-content-around">

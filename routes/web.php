@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardadminController;
-use App\Http\Controllers\PostController;
 use App\Http\Middleware\User;
 use App\Models\Category;
 use App\Models\Post;
@@ -27,7 +27,7 @@ Route::get('/', function () {
 Route::middleware(['auth', 'user'])->group(function() {
     // Route::resource('profile', ProfileController::class);
     Route::get('/user', function() {
-        return view('user.index');
+        return view('user.dashboarduser');
     })->name('user');
 
 });
@@ -37,7 +37,7 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::resource('/admin', AdminController::class);
     Route::resource('/posts', PostController::class);
     Route::resource('/categories', CategoryController::class);
-    Route::get('laporan-post', [AdminController::class, 'laporanpost'])->name('laporanpost');
+    Route::get('laporan-post', [AdminsController::class, 'laporanpost'])->name('laporanpost');
     Route::get('posts-cetak', [AdminController::class, 'cetakpost'])->name('cetak-post');
 
     Route::get('laporan-user', [AdminController::class, 'laporanuser'])->name('laporanuser');

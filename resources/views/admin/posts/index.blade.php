@@ -20,7 +20,7 @@
             <div class="card-body">
                 <a href="{{ route('posts.create') }}" class="d-block mb-3 btn btn-primary">Create Post</a>
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table " id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>Number</th>
@@ -44,19 +44,19 @@
                         <tbody>
                             @foreach ($posts as $post )
 
-                            <tr>
+                            <tr class="flex items-center">
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $post->user->name }}</td>
+                                <td >{{ $post->user->name }}</td>
                                 <td>{{ $post->title }}</td>
-                                <td>
+                                <td class="">
                                     <img class="img-fluid" style="width: 100px" src="{{ asset('storage/' . $post->image) }}" alt="">
                                 </td>
                                 <td>{{ $post->created_at->format('Y/m/d') }}</td>
                                 <td class="d-flex justify-content-around">
-                                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning">
+                                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning text-decoration-none">
                                         <i class="bi bi-pencil"></i>
                                     </a>
-                                    <a href="{{ route('posts.show', $post->id) }}" class="btn btn-success">
+                                    <a href="{{ route('posts.show', $post->id) }}" class="btn btn-success text-decoration-none">
                                         <i class="bi bi-eye-fill"></i>
                                     </a>
                                     <form action="{{ route('posts.destroy', $post->id) }}" class="p-0  ms-0" method="post">

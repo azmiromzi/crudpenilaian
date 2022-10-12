@@ -21,6 +21,8 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href=" {{ asset('startbootstrap-sb-admin-2-gh-pages/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/trix.css') }}">
+    <script type="text/javascript" src="{{ asset('js/trix.js') }}"></script>
 
 </head>
 

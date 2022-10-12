@@ -37,7 +37,8 @@
                   </select>
     		    <div class="form-group">
     		        <label for="description">Description</label>
-    		        <textarea rows="5" class="form-control" name="desc" ></textarea>
+                    <input id="desc" type="hidden" name="desc" name="content">
+                    <trix-editor input="desc"></trix-editor>
     		    </div>
 
     		    <div class="form-group">

@@ -20,12 +20,26 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'is_admin' => 1
         ]);
+        \App\Models\User::factory()->create([
+            'name' => 'user',
+            'email' => 'user@gmail.com',
+            'is_admin' => 0
+        ]);
 
         \App\Models\Category::create([
-            'name' => 'PHP',
+            'name' => 'APPETIZER',
         ]);
         \App\Models\Category::create([
-            'name' => 'Laravel',
+            'name' => 'SOUP',
+        ]);
+        \App\Models\Category::create([
+            'name' => 'MAIN COURSE',
+        ]);
+        \App\Models\Category::create([
+            'name' => 'DESSERT ',
+        ]);
+        \App\Models\Category::create([
+            'name' => 'HOT BEVERAGE',
         ]);
     }
 }

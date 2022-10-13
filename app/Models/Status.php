@@ -9,4 +9,8 @@ class Status extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function pesan() {
+        return $this->hasMany(Pesan::class);
+    }
 }

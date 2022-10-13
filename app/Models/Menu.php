@@ -13,4 +13,10 @@ class Menu extends Model
     public function category() {
         return $this->belongsTo(Category::class);
     }
+    public function user() {
+        return $this->belongsTo(Menu::class);
+    }
+    public function pesan() {
+        return $this->belongsTo(Pesan::class);
+    }
 }

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('desc');
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('status_id')->constrained('statuses')->cascadeOnDelete();
+            $table->foreignId('menu_id')->constrained('menus')->cascadeOnDelete();
             $table->timestamps();
         });
     }

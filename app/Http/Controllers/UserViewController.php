@@ -24,7 +24,10 @@ class UserViewController extends Controller
         return view('user.contactuser');
     }
     public function menu() {
-        return view('user.menuuser');
+        $menus1 = Menu::with('category')->where('category_id', 1)->get();
+        $menus2 = Menu::with('category')->where('category_id', 2)->get();
+        $menus3 = Menu::with('category')->where('category_id', 3)->get();
+        return view('user.menuuser', compact(['menus1', 'menus2', 'menus3']));
     }
     public function testimonial() {
         return view('user.testimonialuser');
@@ -39,11 +42,18 @@ class UserViewController extends Controller
     public function pesanmenustore(Request $request) {
         $validateData = $request->validate([
             'desc' => 'required',
-            'status_id' => 'required'
+            'status_id' => 'required',
+            'menu_id' => 'required'
         ]);
         $validateData['user_id'] = auth()->user()->id;
 
         Pesan::create($validateData);
         return to_route('user');
+    }
+
+
+    public function list() {
+        $lists = Pesan::with('user', 'status')->where('user_id', auth()->user()->id)->get();
+        return view('user.listpesanan', compact(['lists']));
     }
 }

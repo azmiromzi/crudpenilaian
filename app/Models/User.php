@@ -45,4 +45,13 @@ class User extends Authenticatable
     public function post() {
         return $this->hasMany(Post::class);
     }
+
+    public function pesan() {
+        return $this->hasMany(Pesan::class);
+    }
+    public function menu() {
+        return $this->hasMany(Menu::class);
+    }
+
+
 }

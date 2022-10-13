@@ -20,6 +20,7 @@
                 </div>
             </div>
             <a href="{{ route('user.contact') }}" class="nav-item nav-link">Contact</a>
+            <a href="{{ route('user.listpesanan') }}" class="nav-item nav-link">Pesanan Kamu</a>
         </div>
         <form action="{{ route('logout') }}" method="POST" id="logout-form">
             @csrf

@@ -17,6 +17,6 @@ class Menu extends Model
         return $this->belongsTo(Menu::class);
     }
     public function pesan() {
-        return $this->belongsTo(Pesan::class);
+        return $this->hasMany(Pesan::class);
     }
 }

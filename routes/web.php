@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminListPesananController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardadminController;
@@ -47,6 +48,8 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::resource('/posts', PostController::class);
     Route::resource('/menus', MenuController::class);
     Route::resource('/categories', CategoryController::class);
+    Route::resource('/pesanans', AdminListPesananController::class);
+
     Route::get('laporan-post', [AdminController::class, 'laporanpost'])->name('laporanpost');
     Route::get('posts-cetak', [AdminController::class, 'cetakpost'])->name('cetak-post');
 

@@ -23,11 +23,13 @@
                 @method('PUT')
                 <div class="form-group">
                     <label for="title">Nama Menu <span class="require">*</span></label>
-                    <input type="text" class="form-control" name="menu_id" value="{{ $pesanan->menu->id }}"/>
+                    <input type="text" class="form-control" name="menu_id" value="{{ $pesanan->menu->name }}" disabled/>
+                    <input type="text" class="form-control" name="menu_id" value="{{ $pesanan->menu->id }}" hidden/>
                 </div>
     		    <div class="form-group">
     		        <label for="title">Pesanan Tambahan <span class="require">*</span></label>
-    		        <input type="text" class="form-control" name="desc" value="{{ $pesanan->desc }}"/>
+    		        <input type="text" class="form-control" name="desc" value="{{ $pesanan->desc }}" disabled/>
+    		        <input type="text" class="form-control" name="desc" value="{{ $pesanan->desc }}" hidden/>
     		    </div>
     		        <input type="text" class="form-control" name="user_id" value="{{ $pesanan->user->id }}" hidden/>
 

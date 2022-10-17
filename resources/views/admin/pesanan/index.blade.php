@@ -57,6 +57,15 @@
                                     <a href="{{ route('pesanans.edit', $pesanan->id) }}" class="btn btn-success">
                                         <i class="bi bi-pencil"></i>
                                     </a>
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                     <form action="{{ route('pesanans.destroy', $pesanan->id) }}" class="p-0  ms-0" method="post">
                                         @csrf
                                         @method('DELETE')

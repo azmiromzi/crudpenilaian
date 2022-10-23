@@ -23,10 +23,10 @@
         <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active mb-2">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">{{ $list->menu->name }}</h5>
-            <small>{{ $list->status->name }}</small>
+            <hr>
+            <small >{{ $list->status->name }}</small>
           </div>
-          <p class="mb-1">{{ $list->desc }}</p>
-          {{-- <small>Donec id elit non mi porta.</small> --}}
+          <p class="mb-1  ms-1" style="font-style: italic">{{ $list->desc }}</p>
         </a>
     </div>
     @endforeach

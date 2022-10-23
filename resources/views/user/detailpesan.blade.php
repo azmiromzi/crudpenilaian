@@ -44,6 +44,7 @@
                         <div class="col-md-12">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="menu_id"  value="{{ $pesan->id }}" hidden>
+                                <input type="text" class="form-control"   value="{{ $pesan->name }}" disabled>
                             </div>
                         </div>
                         <div class="col-md-12">

@@ -53,7 +53,9 @@ class UserViewController extends Controller
 
 
     public function list() {
-        $lists = Pesan::with('user', 'status', )->where('user_id', auth()->user()->id)->get();
+
+        $lists = Pesan::with('user', 'status', 'menu')->where('user_id', auth()->user()->id)->get();
+
         return view('user.listpesanan', compact(['lists']));
     }
 }

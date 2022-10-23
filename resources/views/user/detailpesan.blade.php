@@ -21,7 +21,7 @@
     <div class="row g-0">
         <div class="col-md-6">
 
-    <div class="video bg-cover" style=" background: linear-gradient(rgba(15, 23, 43, .1), rgba(15, 23, 43, .1)), url({{ asset("storage/$pesan->image") }});">
+    <div class="video bg-cover " style=" background: linear-gradient(rgba(15, 23, 43, .1), rgba(15, 23, 43, .1)), url({{ asset("storage/$pesan->image") }}) no-repeat;">
 
             </div>
         </div>
@@ -48,27 +48,11 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-floating">
-                                <input type="text" class="form-control"  value="{{ $pesan->category->name }}" disabled>
+                                <input type="text" class="form-control"  value="{{ $pesan->name }}" disabled>
                             </div>
                         </div>
                         <input type="text" class="form-control" name="status_id" value="1" hidden>
 
-                        {{-- <div class="col-md-6">
-                            <div class="form-floating date" id="date3" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" />
-                                <label for="datetime">Date & Time</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-floating">
-                                <select class="form-select" id="select1">
-                                  <option value="1">People 1</option>
-                                  <option value="2">People 2</option>
-                                  <option value="3">People 3</option>
-                                </select>
-                                <label for="select1">No Of People</label>
-                              </div>
-                        </div> --}}
                         <div class="col-12">
                             <div class="form-floating">
                                 <textarea class="form-control" placeholder="Special Request" id="message" name="desc" style="height: 100px"></textarea>

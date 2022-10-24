@@ -15,8 +15,11 @@ return new class extends Migration
     {
         Schema::create('pesan_mejas', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email');
             $table->date('tanggal_pesan');
             $table->text('special_request')->nullable();
+            $table->foreignId('muatan_id')->constrained('muatan_mejas')->cascadeOnDelete();
             $table->foreignId('meja_id')->constrained('mejas')->cascadeOnDelete();
             $table->timestamps();
         });

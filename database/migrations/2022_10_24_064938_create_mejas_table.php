@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('mejas', function (Blueprint $table) {
             $table->id();
             $table->string('nama_meja');
-            $table->foreignId('muatan_id')->constrained('muatan_mejas')->cascadeOnDelete();
             $table->enum('status_meja', ['Kosong', 'Penuh']);
             $table->timestamps();
         });

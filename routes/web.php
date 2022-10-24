@@ -39,6 +39,7 @@ Route::middleware(['auth', 'user'])->group(function() {
     Route::get('user/menu/{pesan}', [UserViewController::class, 'pesanmenu'])->name('user.menu.pesan');
     Route::post('user/menu', [UserViewController::class, 'pesanmenustore'])->name('user.menu.pesan.store');
     Route::get('user/listpesanan', [UserViewController::class, 'list'])->name('user.listpesanan');
+    Route::get('user/listpesanantable', [UserViewController::class, 'list'])->name('user.listpesanantable');
 
 });
 Route::middleware(['auth', 'admin'])->group(function() {

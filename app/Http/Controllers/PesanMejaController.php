@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Meja;
+use App\Models\MuatanMeja;
 use App\Models\pesanMeja;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,9 @@ class PesanMejaController extends Controller
      */
     public function index()
     {
-        return view('user.pesanmeja.bookinguser');
+        $muatans = MuatanMeja::get();
+        $nama_meja = Meja::get();
+        return view('user.pesanmeja.bookinguser', compact(['muatans', 'nama_meja']));
     }
 
     /**
@@ -35,7 +39,18 @@ class PesanMejaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'name' => ['required', 'string', 'max:50'],
+            'email' => ['email', 'string', ],
+            'tanggal_pesan' => ['required'],
+            'special_request' => ['nullable', 'string', 'max:100'],
+            'muatan_id ' => ['string'],
+            'meja_id' => ['string']
+        ]);
+        $validateData['user_id'] = auth()->user()->id;
+
+        pesanMeja::create($validateData);
+        return redirect()->back();
     }
 
     /**

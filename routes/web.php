@@ -44,6 +44,7 @@ Route::middleware(['auth', 'user'])->group(function() {
 
     // pesan meja
     Route::get('pesan/meja', [PesanMejaController::class, 'index'])->name('pesan.meja.index');
+    Route::post('pesan/meja', [PesanMejaController::class, 'store'])->name('pesan.meja.store');
 });
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/dashboard', [DashboardadminController::class, 'dashboard'])->name('dashboard');

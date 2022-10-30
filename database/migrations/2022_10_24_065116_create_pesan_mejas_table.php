@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('email');
             $table->dateTime('tanggal_pesan');
             $table->text('special_request')->nullable();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('muatan_id')->constrained('muatan_mejas')->cascadeOnDelete();
             $table->foreignId('meja_id')->constrained('mejas')->cascadeOnDelete();
             $table->timestamps();

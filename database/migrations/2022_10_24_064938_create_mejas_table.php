@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('mejas', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_meja');
-            $table->enum('status_meja', ['Kosong', 'Penuh']);
+            $table->string('nama_meja')->unique();
+            $table->enum('status_meja', ['Kosong', 'Penuh'])->default('Kosong');
             $table->timestamps();
         });
     }

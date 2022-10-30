@@ -14,7 +14,8 @@ class MejaController extends Controller
      */
     public function index()
     {
-        //
+        $mejas = Meja::get();
+        return view('admin.meja.index', compact('mejas'));
     }
 
     /**
@@ -24,7 +25,7 @@ class MejaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.meja.create');
     }
 
     /**
@@ -35,7 +36,13 @@ class MejaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'nama_meja' => ['required', 'string', 'unique:mejas'],
+            'status_meja' => ['required', 'string', 'max:10']
+        ]);
+
+        Meja::create($validateData);
+        return to_route('mejas.index')->with('success', 'meja created successfully');
     }
 
     /**
@@ -57,7 +64,7 @@ class MejaController extends Controller
      */
     public function edit(Meja $meja)
     {
-        //
+        return view('admin.meja.edit', compact('meja'));
     }
 
     /**
@@ -69,7 +76,13 @@ class MejaController extends Controller
      */
     public function update(Request $request, Meja $meja)
     {
-        //
+        $validateData = $request->validate([
+            'nama_meja' => ['required', 'string', 'unique:mejas'],
+            'status_meja' => ['required', 'string', 'max:10']
+        ]);
+
+        $meja->update($validateData);
+        return to_route('mejas.index')->with('success', 'meja updated seccessfully');
     }
 
     /**
@@ -80,6 +93,7 @@ class MejaController extends Controller
      */
     public function destroy(Meja $meja)
     {
-        //
+        $meja->delete();
+        return to_route('mejas.index')->with('success', 'meja deleted seccessfully');
     }
 }

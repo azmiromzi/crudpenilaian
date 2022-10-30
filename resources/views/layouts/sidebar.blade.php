@@ -45,6 +45,10 @@
             <span>All Menu</span></a>
     </li>
     <li class="nav-item">
+        <a class="nav-link" href="{{ route('mejas.index') }}">
+            <span>All Meja</span></a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="{{ route('pesanans.index') }}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>All Pesanan</span></a>

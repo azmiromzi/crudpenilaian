@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminListPesananController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardadminController;
+use App\Http\Controllers\MejaController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserViewController;
 use App\Http\Middleware\User;
@@ -39,7 +40,7 @@ Route::middleware(['auth', 'user'])->group(function() {
     Route::get('user/menu/{pesan}', [UserViewController::class, 'pesanmenu'])->name('user.menu.pesan');
     Route::post('user/menu', [UserViewController::class, 'pesanmenustore'])->name('user.menu.pesan.store');
     Route::get('user/listpesanan', [UserViewController::class, 'list'])->name('user.listpesanan');
-    Route::get('user/listpesanantable', [UserViewController::class, 'list'])->name('user.listpesanantable');
+    // Route::get('user/listpesanantable', [UserViewController::class, 'list'])->name('user.listpesanantable');
 
 });
 Route::middleware(['auth', 'admin'])->group(function() {
@@ -49,6 +50,7 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::resource('/posts', PostController::class);
     Route::resource('/menus', MenuController::class);
     Route::resource('/categories', CategoryController::class);
+    Route::resource('/mejas', MejaController::class);
     Route::resource('/pesanans', AdminListPesananController::class);
 
     Route::get('laporan-post', [AdminController::class, 'laporanpost'])->name('laporanpost');

@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardadminController;
 use App\Http\Controllers\MejaController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\PesanMejaController;
 use App\Http\Controllers\UserViewController;
 use App\Http\Middleware\User;
 use App\Models\Category;
@@ -35,13 +36,14 @@ Route::middleware(['auth', 'user'])->group(function() {
     Route::get('/user/service', [UserViewController::class, 'service'])->name('user.service');
     Route::get('/user/menu', [UserViewController::class, 'menu'])->name('user.menu');
     Route::get('/user/contact', [UserViewController::class, 'contact'])->name('user.contact');
-    Route::get('/user/booking', [UserViewController::class, 'booking'])->name('user.booking');
     Route::get('/user/testimonial', [UserViewController::class, 'testimonial'])->name('user.testimonial');
     Route::get('user/menu/{pesan}', [UserViewController::class, 'pesanmenu'])->name('user.menu.pesan');
     Route::post('user/menu', [UserViewController::class, 'pesanmenustore'])->name('user.menu.pesan.store');
     Route::get('user/listpesanan', [UserViewController::class, 'list'])->name('user.listpesanan');
-    // Route::get('user/listpesanantable', [UserViewController::class, 'list'])->name('user.listpesanantable');
 
+
+    // pesan meja
+    Route::get('pesan/meja', [PesanMejaController::class, 'index'])->name('pesan.meja.index');
 });
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/dashboard', [DashboardadminController::class, 'dashboard'])->name('dashboard');

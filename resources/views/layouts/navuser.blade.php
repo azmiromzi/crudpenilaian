@@ -15,7 +15,7 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                 <div class="dropdown-menu m-0">
-                    <a href="{{ route('user.booking') }}" class="dropdown-item">Booking</a>
+                    <a href="{{ route('pesan.meja.index') }}" class="dropdown-item">Booking</a>
                     <a href="{{ route('user.testimonial') }}" class="dropdown-item">Testimonial</a>
                 </div>
             </div>
